@@ -134,7 +134,10 @@ document.querySelector("#button2").addEventListener("click", function () {
   for (let i = 0; i < chosenWord.length; i++) {
     asterix += "*";
   }
-  document.querySelector(".result").querySelector(".text").textContent = "";
+  document
+    .querySelector(".result")
+    .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
+  text("show");
 });
 
 // functions to show or hide the messages
