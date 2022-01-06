@@ -24,6 +24,8 @@ let random = Math.trunc(Math.random() * words.length);
 console.log(random);
 
 let chosenWord = words[random];
+let firstLetter = chosenWord.substring(0, 1).toUpperCase();
+console.log(firstLetter);
 let asterix = "";
 let chosenLetter = "";
 console.log(chosenWord);
@@ -33,9 +35,14 @@ for (let i = 0; i < chosenWord.length; i++) {
   asterix += "*";
 }
 
+document
+  .querySelector(".result")
+  .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
+text("show");
+
 // on clicking the button1
 document.querySelector("#button1").addEventListener("click", function () {
-  chosenLetter = document.querySelector("#iname").value;
+  chosenLetter = document.querySelector("#iname").value.toLowerCase();
 
   //handle countdown
   if (countdown > 1) {
@@ -48,17 +55,21 @@ document.querySelector("#button1").addEventListener("click", function () {
             asterix.substring(0, i) +
             chosenLetter +
             asterix.substring(i + 1, asterix.length);
-
-          // show result texts
-          wrong("hide");
-          text("show");
-          document
-            .querySelector(".result")
-            .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
-          document.querySelector("#iname").value = "";
-          document.querySelector("#iname").focus();
         }
       }
+      // write first letter big
+      if (asterix[0] === chosenLetter) {
+        asterix = firstLetter + asterix.substring(1, asterix.length);
+      }
+      // show result texts
+
+      wrong("hide");
+      text("show");
+      document
+        .querySelector(".result")
+        .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
+      document.querySelector("#iname").value = "";
+      document.querySelector("#iname").focus();
 
       // if word doesn't contain the chosen letter
     } else {
@@ -66,7 +77,15 @@ document.querySelector("#button1").addEventListener("click", function () {
       document
         .querySelector(".countdown")
         .querySelector(".number").textContent = countdown;
+      text("hide");
       wrong("show");
+
+      // hide the message after 3 seconds
+      setTimeout(() => {
+        wrong("hide");
+        text("show");
+      }, 3000);
+
       document.querySelector("#iname").value = "";
       document.querySelector("#iname").focus();
     }
@@ -87,8 +106,11 @@ document.querySelector("#button1").addEventListener("click", function () {
     // if player lost
   } else {
     text("show");
-    document.querySelector(".result").querySelector(".text").textContent =
-      "Leider verloren!";
+    document
+      .querySelector(".result")
+      .querySelector(".text").textContent = `Leider verloren! Das Wort wäre "${
+      firstLetter + chosenWord.substring(1, chosenWord.length)
+    }" gewesen.`;
     document
       .querySelector(".countdown")
       .querySelector(".number").textContent = 0;
@@ -114,6 +136,8 @@ document.querySelector("#button2").addEventListener("click", function () {
   console.log(random);
 
   chosenWord = words[random];
+  firstLetter = chosenWord.substring(0, 1).toUpperCase();
+  console.log(firstLetter);
   asterix = "";
   console.log(chosenWord);
 
