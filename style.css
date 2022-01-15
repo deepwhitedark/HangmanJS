@@ -7,30 +7,27 @@ body {
   color: rgb(0, 158, 0);
 }
 
-.text {
-  font-size: 30px;
-}
-
-.number {
-  font-size: 25px;
-}
 .element {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
   color: rgb(39, 39, 39);
 }
 
 .countdown {
-  font-size: 20px;
+  display: flex;
   text-align: center;
-  margin: 10px 0 0 0;
+  max-width: fit-content;
+  font-size: 20px;
+  margin: 10px auto 0 auto;
   color: rgb(0, 100, 146);
 }
 
 .input {
-  margin-left: auto;
-  margin-right: auto;
-  width: 309px;
+  font-size: 25px;
+  display: flex;
+  text-align: center;
+  margin: 10px auto 0 auto;
+  max-width: fit-content;
   color: rgb(39, 39, 39);
 }
 
@@ -45,6 +42,11 @@ body {
   color: rgb(39, 39, 39);
 }
 
+.wrong {
+  color: rgb(168, 13, 13);
+  font-size: 25px;
+}
+
 .buttons {
   text-align: center;
   margin-top: 20px;
@@ -56,43 +58,83 @@ body {
   margin-left: 80px;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 3% 3% 0 3%;
+  min-height: 100px;
+}
 .pictures {
-  margin: 20px 0 0 0;
-  text-align: center;
+  justify-content: left;
+}
+
+.guesses {
+  max-width: 100px;
+  width: 40%;
+  min-height: 230px;
+  height: fit-content;
+  border: 2px solid rgb(0, 100, 146);
+  color: rgb(0, 100, 146);
+  font-size: 20px;
+  justify-content: right;
+}
+
+.guesses > p {
+  margin: 0 0 0 0;
+}
+
+.guesses ul {
+  margin: 0 0 5px 0;
+}
+
+.guesses li {
+  line-height: 19px;
 }
 
 .basic {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .head {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .eye1 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .eye2 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .nose {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .mouth {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .body {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .arm1 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .arm2 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .leg1 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 .leg2 {
-  width: 40%;
+  width: 95%;
+  max-width: 800px;
 }
 
 .hide {

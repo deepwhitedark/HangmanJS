@@ -1,225 +1,159 @@
 "use strict";
 
-const wordsEmpty = [];
-let test =
-  "abbau abgeordnete abkommen ablehnung abschied abschluss abschnitt absicht abstand abstimmung abteilung aktie aktion aktionär aktivität aldi allianz alter alternative analyse anbieter anerkennung anforderung anfrage angebot angriff angst anklage anlage anlass anleger anschlag ansicht anspruch anstieg anteil antrag antwort anwalt anwendung anzeige arbeitgeber arbeitslosigkeit arbeitsplatz arbeitsschritt armee artikel arzt atmosphäre aufbau auffassung aufgabe aufklärung aufmerksamkeit aufnahme auftakt auftrag auftritt auge augenblick ausbildung ausdruck auseinandersetzung ausgabe ausgleich auskunft ausland ausländer ausnahme aussage aussicht ausstellung auswirkung auto autobahn autor bahn bahnhof ball band bank basis bau bauer baum bedarf bedeutung bedingung begegnung beginn begriff begründung behandlung behörde beispiel beitrag belastung benutzer beobachter beratung bereitschaft berg bericht beruf berufung beschäftigte beschäftigung besitz bestand besuch besucher beteiligung betrag betrieb bevölkerung bewegung beweis bewertung bewohner bewusstsein bezeichnung beziehung bier bilanz bildung blatt blick blut bmw boden botschaft branche brand brief brücke buch bund bundesliga bundesrepublik bundeswehr bus börse bühne bündnis bürgermeister büro chance charakter computer dach dank darstellung dauer debatte demokratie demonstrant denken detail dialog dienst dienstleistung ding direktor diskussion dokumentation dorf drittel druck dutzend ebene ecke ehe eindruck einfluss einführung einheit einigung einkommen einnahme einrichtung einsatz einschätzung einstellung einstieg einwohner energie engagement entwurf erde ereignis erfahrung erhöhung erinnerung erkenntnis erklärung erwartung erweiterung eröffnung essen eu euro existenz fahrt fahrzeug fall falle farbe februar fehler feld fenster fernsehen fest feuer feuerwehr figur finale finanzierung firma flucht flughafen fläche flüchtling folge fond forderung forscher forschung fortsetzung foto fraktion freiheit freude frieden funktion fusion fuß fußball förderung führer führung fünf galerie gang garten gast geben gebiet geburtstag gebäude gedanke gefahr gefängnis gefühl gegensatz gegenteil gegenwart geist gelegenheit gelände gemeinde genehmigung generation gericht geschäft gesetz gesicht gespräch gestalt gestaltung gesundheit gewalt gewerkschaft gewicht gewinn glück gold grad grenze grundlage größe gründung gutachten haft halle haltung handel haushalt heimat hektar herbst herkunft hersteller herstellung herz himmel hintergrund hinweis hof hoffnung holz hotel hälfte händler höhepunkt idee identität image industrie inhalt initiative insel institut inszenierung integration interesse internet interview investition investor israel jahrhundert jahrzehnt job journalist jugendliche justiz kabinett kamera kampf kapital kapitel karriere karte kasse katastrophe kauf keller kenntnis kennzeichen kern kilogramm kilometer kino kirche klage klasse klima koalition kollege kommission kommune kommunikation kompromiss konferenz konflikt kongress konkurrenz konsequenz kontakt kontrolle konzept konzern konzert kooperation kopf kraft krankenhaus krankheit kreis krieg krise kritik kultur kunst kurs könig körper künstler lager landkreis landschaft landtag landwirtschaft lehre leistung leitung licht liebe linie liste liter literatur luft lust länge lösung macht management manager mannschaft marke maschine material mauer maß maßnahme medium meer mehrheit meinung meister menge methode minister mischung mitarbeiter mitte mitteilung mittel mittelpunkt modell moderne moment mord morgen motto mund museum mut möglichkeit nachbar nachfrage nachmittag nachricht nacht nase nation natur netz neubau nichts niederlage niveau norden not notwendigkeit nummer nutzung nähe objekt oper opposition ordnung organisation ort osten papier parlament partie partner patient pause person personal pfarrer pflanze pflege pflicht pfund phase plan planung position post posten praxis preis premiere prinzip privatisierung produkt produktion professor projekt protest provinz prozess prüfung punkt quadratmeter qualität quartal rahmen rand rang rat rathaus raum reaktion realität rebell rechnung recht rede reform regel regelung regen regie region reich reihe reise rennen republik rest revolution richtung risiko roman ruhe runde rücken rückgang rückkehr rücktritt rückzug saal sache saison sammlung sanierung schaden schatten schauspieler schicksal schiff schloss schluss schlüssel schreiben schriftsteller schritt schuld schule schutz schwerpunkt schwierigkeit see seele sekunde senat sender serie service sicherheit sicht sieg sinn situation sitz sitzung sms software soldat sommer sonne sorge spannung spaß spiegel spielen spitze sport sprache sprecherin spur staat staatsanwaltschaft stand standort start status steigerung stein stelle stellung stellungnahme steuer stiftung stil stimme stimmung stoff strategie straße strecke streit strom struktur student studie studium stärke stück suche summe szene süden tabelle tat tatsache tausend technik teilnahme teilnehmer telefon telekom tempo tendenz termin text theater theorie tier tisch titel tod ton tonne tor tote tourist tradition training traum treffen trend trennung typ tätigkeit tür umfang umfeld umfrage umgang umgebung umsatz umsetzung umwelt unabhängigkeit unfall universität unterschied unterstützung untersuchung urlaub ursache urteil variante veranstalter veranstaltung verantwortung verband verbesserung verbindung verbraucher verbrechen verdacht verein vereinbarung vereinigung verfahren verfassung verfügung vergangenheit vergleich verhalten verhandlung verhältnis verkauf verkehr verlag verlauf verletzung verlust version verständnis versuch verteidigung vertrag vertrauen vertrieb verwaltung verwendung verzicht veränderung viertel volk voraussetzung vorbereitung vorbild vorgang vorgehen vorhaben vorlage vorschlag vorsitzende vorstellung vorteil vortrag vorwurf wachstum waffe wagen wahl wahlkampf wahrheit wald wand ware wasser wechsel weihnachten welt weltmeister wende werbung werk wert westen wettbewerb wetter widerspruch widerstand wind winter wirklichkeit wirkung wissen wissenschaft wissenschaftler wochenende wohnung wort wunder wunsch währung zeichen zeitpunkt zeitraum zeitschrift zeitung zelle zentimeter zentrum zeuge zimmer zins zug zugang zusammenhang zustand zustimmung zweck zweifel änderung ärger äußerung überlegung übernahme";
+const inputField = document.querySelector("#iname");
+const bodyStyle = document.querySelector("body").style;
+const resultText = document.querySelector(".result").querySelector(".text");
+const countdownText = document
+  .querySelector(".countdown")
+  .querySelector(".number");
+const submitButton = document.querySelector("#button1");
+const restartButton = document.querySelector("#button2");
+const guessList = document.querySelector(".guessList");
 
-const words = wordsEmpty.concat(test.split(" "));
+const addLi = (content) => {
+  const li = document.createElement("li");
+  li.appendChild(document.createTextNode(content));
+  guessList.appendChild(li);
+};
+const removeLi = () => {
+  while (guessList.firstChild) guessList.removeChild(guessList.firstChild);
+};
+// functions to show or hide the messages and pictures
+const removeClass = (textOrWrong) =>
+  document
+    .querySelector(".result")
+    .querySelector(`.${textOrWrong}`)
+    .classList.remove("hide");
 
-let countdown = Number(
-  document.querySelector(".countdown").querySelector(".number").textContent
-);
+const addClass = (textOrWrong) =>
+  document
+    .querySelector(".result")
+    .querySelector(`.${textOrWrong}`)
+    .classList.add("hide");
 
-// set focus on input field
-document.querySelector("#iname").focus();
+const toggleHide = (toggleHide, textOrWrong) =>
+  toggleHide === "hide" ? addClass(textOrWrong) : removeClass(textOrWrong);
 
-// generate random number
-let random = Math.trunc(Math.random() * words.length);
+const switchPicture = (number, toggleHide) => {
+  imageClassNum = numPictures.get(number);
+  toggleHide === "hide"
+    ? document.querySelector(`.${imageClassNum}`).classList.add("hide")
+    : document.querySelector(`.${imageClassNum}`).classList.remove("hide");
+};
 
-let chosenWord = words[random];
-let firstLetter = chosenWord.substring(0, 1).toUpperCase();
-let asterix = "";
-let chosenLetter = "";
-let imageClassNum;
-switchPicture(countdown, "show");
+let chosenLetter, countdown, imageClassNum, chosenWord, firstLetter, asterix;
 
-// iterate over array word and convert to asterix
-for (let i = 0; i < chosenWord.length; i++) {
-  asterix += "*";
-}
+const numPictures = new Map();
+numPictures.set(10, "basic");
+numPictures.set(9, "head");
+numPictures.set(8, "eye1");
+numPictures.set(7, "eye2");
+numPictures.set(6, "nose");
+numPictures.set(5, "mouth");
+numPictures.set(4, "body");
+numPictures.set(3, "arm1");
+numPictures.set(2, "arm2");
+numPictures.set(1, "leg1");
+numPictures.set(0, "leg2");
 
-document
-  .querySelector(".result")
-  .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
-text("show");
+const words =
+  "abbau abgeordnete abkommen ablehnung abschied abschluss abschnitt absicht abstand abstimmung abteilung aktie aktion aldi allianz alter alternative analyse anbieter anerkennung anforderung anfrage angebot angriff angst anklage anlage anlass anleger anschlag ansicht anspruch anstieg anteil antrag antwort anwalt anwendung anzeige arbeitgeber arbeitslosigkeit arbeitsplatz arbeitsschritt armee artikel arzt aufbau auffassung aufgabe aufmerksamkeit aufnahme auftakt auftrag auftritt auge augenblick ausbildung ausdruck auseinandersetzung ausgabe ausgleich auskunft ausland ausnahme aussage aussicht ausstellung auswirkung auto autobahn autor bahn bahnhof ball band bank basis bau bauer baum bedarf bedeutung bedingung begegnung beginn begriff behandlung beispiel beitrag belastung benutzer beobachter beratung bereitschaft berg bericht beruf berufung besitz bestand besuch besucher beteiligung betrag betrieb bewegung beweis bewertung bewohner bewusstsein bezeichnung beziehung bier bilanz bildung blatt blick blut bmw boden botschaft branche brand brief buch bund bundesliga bundesrepublik bundeswehr bus chance charakter computer dach dank darstellung dauer debatte demokratie demonstrant denken detail dialog dienst dienstleistung ding direktor diskussion dokumentation dorf drittel druck dutzend ebene ecke ehe eindruck einfluss einheit einigung einkommen einnahme einrichtung einsatz einstellung einstieg einwohner energie engagement entwurf erde ereignis erfahrung erinnerung erkenntnis erwartung erweiterung essen eu euro existenz fahrt fahrzeug fall falle farbe februar fehler feld fenster fernsehen fest feuer feuerwehr figur finale finanzierung firma flucht flughafen folge fond forderung forscher forschung fortsetzung foto fraktion freiheit freude frieden funktion fusion galerie gang garten gast geben gebiet geburtstag gedanke gefahr gegensatz gegenteil gegenwart geist gelegenheit gemeinde genehmigung generation gericht gesetz gesicht gestalt gestaltung gesundheit gewalt gewerkschaft gewicht gewinn gold grad grenze grundlage gutachten haft halle haltung handel haushalt heimat hektar herbst herkunft hersteller herstellung herz himmel hintergrund hinweis hof hoffnung holz hotel idee image industrie inhalt initiative insel institut inszenierung integration interesse internet interview investition investor israel jahrhundert jahrzehnt job journalist jugendliche justiz kabinett kamera kampf kapital kapitel karriere karte kasse katastrophe kauf keller kenntnis kennzeichen kern kilogramm kilometer kino kirche klage klasse klima koalition kollege kommission kommune kommunikation kompromiss konferenz konflikt kongress konkurrenz konsequenz kontakt kontrolle konzept konzern konzert kooperation kopf kraft krankenhaus krankheit kreis krieg krise kritik kultur kunst kurs lager landkreis landschaft landtag landwirtschaft lehre leistung leitung licht liebe linie liste liter literatur luft lust macht management manager mannschaft marke maschine material mauer medium meer mehrheit meinung meister menge methode minister mischung mitarbeiter mitte mitteilung mittel mittelpunkt modell moderne moment mord morgen motto mund museum mut nachbar nachfrage nachmittag nachricht nacht nase nation natur netz neubau nichts niederlage niveau norden not notwendigkeit nummer nutzung objekt oper opposition ordnung organisation ort osten papier parlament partie partner patient pause person personal pfarrer pflanze pflege pflicht pfund phase plan planung position post posten praxis preis premiere prinzip privatisierung produkt produktion professor projekt protest provinz prozess punkt quadratmeter quartal rahmen rand rang rat rathaus raum reaktion rebell rechnung recht rede reform regel regelung regen regie region reich reihe reise rennen republik rest revolution richtung risiko roman ruhe runde saal sache saison sammlung sanierung schaden schatten schauspieler schicksal schiff schloss schluss schreiben schriftsteller schritt schuld schule schutz schwerpunkt schwierigkeit see seele sekunde senat sender serie service sicherheit sicht sieg sinn situation sitz sitzung sms software soldat sommer sonne sorge spannung spiegel spielen spitze sport sprache sprecherin spur staat staatsanwaltschaft stand standort start status steigerung stein stelle stellung stellungnahme steuer stiftung stil stimme stimmung stoff strategie strecke streit strom struktur student studie studium suche summe szene tabelle tat tatsache tausend technik teilnahme teilnehmer telefon telekom tempo tendenz termin text theater theorie tier tisch titel tod ton tonne tor tote tourist tradition training traum treffen trend trennung typ umfang umfeld umfrage umgang umgebung umsatz umsetzung umwelt unfall unterschied untersuchung urlaub ursache urteil variante veranstalter veranstaltung verantwortung verband verbesserung verbindung verbraucher verbrechen verdacht verein vereinbarung vereinigung verfahren verfassung vergangenheit vergleich verhalten verhandlung verkauf verkehr verlag verlauf verletzung verlust version versuch verteidigung vertrag vertrauen vertrieb verwaltung verwendung verzicht viertel volk voraussetzung vorbereitung vorbild vorgang vorgehen vorhaben vorlage vorschlag vorsitzende vorstellung vorteil vortrag vorwurf wachstum waffe wagen wahl wahlkampf wahrheit wald wand ware wasser wechsel weihnachten welt weltmeister wende werbung werk wert westen wettbewerb wetter widerspruch widerstand wind winter wirklichkeit wirkung wissen wissenschaft wissenschaftler wochenende wohnung wort wunder wunsch zeichen zeitpunkt zeitraum zeitschrift zeitung zelle zentimeter zentrum zeuge zimmer zins zug zugang zusammenhang zustand zustimmung zweck zweifel".split(
+    " "
+  );
+const initial = () => {
+  removeLi();
+  chosenLetter = "";
+  countdown = 10;
+  let random = Math.trunc(Math.random() * words.length);
+  chosenWord = words[random];
+  firstLetter = chosenWord.slice(0, 1).toUpperCase();
+  asterix = "";
+  console.log(chosenWord);
 
-// on clicking the button1
-document.querySelector("#button1").addEventListener("click", function () {
-  chosenLetter = document.querySelector("#iname").value.toLowerCase();
+  // calculate hidden word
+  for (let i = 0; i < chosenWord.length; i++) asterix += "*";
 
-  //handle countdown
+  countdownText.textContent = countdown;
+  bodyStyle.backgroundColor = "rgb(179, 179, 179)";
+
+  //change pictures
+  for (let i = 9; i >= 0; i--) switchPicture(i, "hide");
+
+  imageClassNum = 10;
+  switchPicture(imageClassNum, "show");
+  resultText.textContent = `Das Wort ist ${asterix}`;
+  toggleHide("show", "text");
+  inputField.focus();
+};
+initial();
+
+// on submit
+submitButton.addEventListener("click", function () {
+  chosenLetter = inputField.value.toLowerCase();
+
+  // if countdown is greater 1 and the word contains the guessed letter
   if (countdown > 1) {
-    // if word contains the chosen letter
     if (chosenWord.includes(chosenLetter)) {
       for (let i = 0; i < asterix.length; i++) {
-        if (chosenWord[i] === chosenLetter) {
-          // remove asterix and insert letter
+        // remove asterix and insert letter
+        if (chosenWord[i] === chosenLetter)
           asterix =
-            asterix.substring(0, i) +
+            asterix.slice(0, i) +
             chosenLetter +
-            asterix.substring(i + 1, asterix.length);
-        }
+            asterix.slice(i + 1, asterix.length);
       }
       // write first letter big
-      if (asterix[0] === chosenLetter) {
-        asterix = firstLetter + asterix.substring(1, asterix.length);
-      }
+      if (asterix[0] === chosenLetter)
+        asterix = firstLetter + asterix.slice(1, asterix.length);
+
       // show result texts
-
-      wrong("hide");
-      text("show");
-      document
-        .querySelector(".result")
-        .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
-      document.querySelector("#iname").value = "";
-      document.querySelector("#iname").focus();
-
-      // if word doesn't contain the chosen letter
-    } else {
+      toggleHide("hide", "wrong");
+      toggleHide("show", "text");
+      resultText.textContent = `Das Wort ist ${asterix}`;
+      inputField.value = "";
+      inputField.focus();
+    }
+    // if word doesn't contain the chosen letter
+    else {
       countdown--;
-      document
-        .querySelector(".countdown")
-        .querySelector(".number").textContent = countdown;
-      text("hide");
-      wrong("show");
-
+      countdownText.textContent = countdown;
+      toggleHide("hide", "text");
+      toggleHide("show", "wrong");
       switchPicture(countdown, "show");
       switchPicture(countdown + 1, "hide");
 
-      // hide the message after 3 seconds
+      // add li Element to ul, which contains the chosen letter
+      addLi(`${chosenLetter}`);
+
+      // hide the message after 2.5 seconds
       setTimeout(() => {
-        wrong("hide");
-        text("show");
-      }, 3000);
+        toggleHide("hide", "wrong");
+        toggleHide("show", "text");
+      }, 2500);
 
-      document.querySelector("#iname").value = "";
-      document.querySelector("#iname").focus();
+      inputField.value = "";
+      inputField.focus();
     }
-
     // repeat until asterix does't contain '*'
     // if player won
     if (!asterix.includes("*")) {
-      document
-        .querySelector(".result")
-        .querySelector(
-          ".text"
-        ).textContent = `Das Wort ist "${asterix}", du hast gewonnen!`;
-
-      document.querySelector("body").style.backgroundColor = "rgb(79, 199, 79)";
-      document.querySelector("#iname").value = "";
+      resultText.textContent = `Das Wort ist "${asterix}", du hast gewonnen!`;
+      bodyStyle.backgroundColor = "rgb(79, 199, 79)";
+      inputField.value = "";
     }
-
-    // if player lost
-  } else {
-    text("show");
+  }
+  // if player lost
+  else {
+    toggleHide("show", "text");
     switchPicture(0, "show");
     switchPicture(1, "hide");
-    document
-      .querySelector(".result")
-      .querySelector(".text").textContent = `Leider verloren! Das Wort wäre "${
-      firstLetter + chosenWord.substring(1, chosenWord.length)
+    resultText.textContent = `Leider verloren! Das Wort wäre "${
+      firstLetter + chosenWord.slice(1, chosenWord.length)
     }" gewesen.`;
-    document
-      .querySelector(".countdown")
-      .querySelector(".number").textContent = 0;
-    document.querySelector("body").style.backgroundColor = "rgb(197, 68, 68)";
-    document.querySelector("#iname").value = "";
+    countdownText.textContent = 0;
+    bodyStyle.backgroundColor = "rgb(197, 68, 68)";
+    inputField.value = "";
   }
 });
-
-// on clicking button 2
-document.querySelector("#button2").addEventListener("click", function () {
-  document.querySelector("#iname").focus();
-  chosenLetter = "";
-
-  document.querySelector("body").style.backgroundColor = "rgb(179, 179, 179)";
-
-  //reset countdown
-  countdown = 10;
-  document.querySelector(".countdown").querySelector(".number").textContent =
-    countdown;
-
-  //change pictures back
-  for (let i = 9; i >= 0; i--) {
-    switchPicture(i, "hide");
-  }
-  imageClassNum = 10;
-  switchPicture(imageClassNum, "show");
-
-  // generate random number
-  random = Math.trunc(Math.random() * words.length);
-
-  chosenWord = words[random];
-  firstLetter = chosenWord.substring(0, 1).toUpperCase();
-  asterix = "";
-
-  // iterate over array word and convert to asterix
-  for (let i = 0; i < chosenWord.length; i++) {
-    asterix += "*";
-  }
-  document
-    .querySelector(".result")
-    .querySelector(".text").textContent = `Das Wort ist ${asterix}`;
-  text("show");
-});
-
-// functions to show or hide the messages and pictures
-function text(showOrHide) {
-  switch (showOrHide) {
-    case "show":
-      document
-        .querySelector(".result")
-        .querySelector(".text")
-        .classList.remove("d-none");
-      break;
-    case "hide":
-      document
-        .querySelector(".result")
-        .querySelector(".text")
-        .classList.add("d-none");
-  }
-}
-
-function wrong(showOrHide) {
-  switch (showOrHide) {
-    case "show":
-      document
-        .querySelector(".result")
-        .querySelector(".wrong")
-        .classList.remove("d-none");
-      break;
-    case "hide":
-      document
-        .querySelector(".result")
-        .querySelector(".wrong")
-        .classList.add("d-none");
-  }
-}
-function switchPicture(number, showOrHide) {
-  imageClassNum = numPicture(number);
-  switch (showOrHide) {
-    case "show":
-      document.querySelector(`.${imageClassNum}`).classList.remove("hide");
-      break;
-    case "hide":
-      document.querySelector(`.${imageClassNum}`).classList.add("hide");
-      break;
-  }
-}
-
-function numPicture(number) {
-  switch (number) {
-    case 10:
-      return (imageClassNum = "basic");
-    case 9:
-      return (imageClassNum = "head");
-    case 8:
-      return (imageClassNum = "eye1");
-    case 7:
-      return (imageClassNum = "eye2");
-    case 6:
-      return (imageClassNum = "nose");
-    case 5:
-      return (imageClassNum = "mouth");
-    case 4:
-      return (imageClassNum = "body");
-    case 3:
-      return (imageClassNum = "arm1");
-    case 2:
-      return (imageClassNum = "arm2");
-    case 1:
-      return (imageClassNum = "leg1");
-    case 0:
-      return (imageClassNum = "leg2");
-  }
-}
+// on restart
+restartButton.addEventListener("click", initial);
