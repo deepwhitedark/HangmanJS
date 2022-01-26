@@ -13,32 +13,52 @@ body {
   color: rgb(39, 39, 39);
 }
 
+.inputOutput {
+  display: flex;
+  flex-direction: column;
+}
+
+.countAndRestart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 8px 11px 0 11px;
+}
 .countdown {
   display: flex;
-  text-align: center;
-  max-width: fit-content;
-  font-size: 20px;
-  margin: 10px auto 0 auto;
+  font-size: 25px;
   color: rgb(0, 100, 146);
+}
+.number {
+  align-self: center;
+  margin: 0 0 0 5px;
+}
+.text {
+  align-self: center;
+  margin: 0 0 0 0;
+}
+.inputSubmit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .input {
-  font-size: 25px;
-  display: flex;
-  text-align: center;
-  margin: 10px auto 0 auto;
-  max-width: fit-content;
+  margin: 0 0 0 7vh;
+  align-self: center;
+  font-size: 30px;
   color: rgb(39, 39, 39);
 }
 
 #iname {
-  width: 100px;
+  width: 5vh;
+  margin: 0 0 0 5px;
 }
 
 .result {
-  margin-top: 20px;
+  align-self: center;
+  margin: 20px 0 15px 0;
   font-size: 25px;
-  text-align: center;
   color: rgb(39, 39, 39);
 }
 
@@ -47,41 +67,36 @@ body {
   font-size: 25px;
 }
 
-.buttons {
-  text-align: center;
-  margin-top: 20px;
-  margin-left: -50px;
-  font-size: 20px;
+#button1 {
+  margin: 0 10px 0 20px;
 }
 
 #button2 {
-  margin-left: 80px;
+  margin: 0 0 0 20px;
+  align-self: flex-start;
+  justify-self: flex-end;
 }
 
-.flex-container {
+.flex-pictures {
   display: flex;
   justify-content: center;
   align-content: center;
   margin: 3% 3% 0 3%;
-  min-height: 100px;
+  min-height: 80px;
 }
 .pictures {
-  justify-content: left;
+  justify-content: flex-start;
 }
-
 .guesses {
-  max-width: 100px;
-  width: 40%;
-  min-height: 230px;
-  height: fit-content;
   border: 2px solid rgb(0, 100, 146);
+  border-radius: 15px;
   color: rgb(0, 100, 146);
-  font-size: 20px;
-  justify-content: right;
+  font-size: 25px;
+  justify-content: flex-end;
 }
 
 .guesses > p {
-  margin: 0 0 0 0;
+  margin: 0 5px 0 5px;
 }
 
 .guesses ul {
@@ -89,52 +104,54 @@ body {
 }
 
 .guesses li {
-  line-height: 19px;
+  line-height: 25px;
+  font-size: 25px;
 }
 
+/* Pictures*/
 .basic {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .head {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .eye1 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .eye2 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .nose {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .mouth {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .body {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .arm1 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .arm2 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .leg1 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 .leg2 {
   width: 95%;
-  max-width: 800px;
+  max-width: 600px;
 }
 
 .hide {
